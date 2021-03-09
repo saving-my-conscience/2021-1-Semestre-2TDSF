@@ -21,6 +21,8 @@ public class Pessoa {
 	
 	private int idade;
 	
+	private Genero genero;
+	
 	//Construtores
 	public Pessoa(String nome) {
 		this.nome = nome;
@@ -60,6 +62,14 @@ public class Pessoa {
 	
 	public void setIdade(int idade) {
 		this.idade = idade;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 	
 }
