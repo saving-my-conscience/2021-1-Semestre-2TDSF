@@ -1,5 +1,6 @@
 package br.com.fiap.exception;
 
+//@SuppressWarnings("serial")
 public class SaldoInsuficienteException extends Exception {
 
 	public SaldoInsuficienteException() {}
@@ -9,7 +10,7 @@ public class SaldoInsuficienteException extends Exception {
 	}
 	
 	public SaldoInsuficienteException(double valor) {
-		super("Saldo insuficiente, máximo: " + valor);
+		super("Saldo insuficiente, mï¿½ximo: " + valor);
 	}
 	
 }

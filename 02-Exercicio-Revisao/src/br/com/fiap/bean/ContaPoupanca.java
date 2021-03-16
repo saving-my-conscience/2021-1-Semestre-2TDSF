@@ -9,8 +9,8 @@ public class ContaPoupanca extends Conta implements ContaInvestimento {
 	private float taxa;
 	
 	//Constante
-	//final -> não permite alterar o valor, na classe não permite filhas, método a sobrescrita 
-	//static -> define o elemento de Classe e não de objeto  
+	//final -> nï¿½o permite alterar o valor, na classe nï¿½o permite filhas, mï¿½todo a sobrescrita 
+	//static -> define o elemento de Classe e nï¿½o de objeto  
 	public static final float RENDIMENTO = 0.04f;
 	
 	@Override

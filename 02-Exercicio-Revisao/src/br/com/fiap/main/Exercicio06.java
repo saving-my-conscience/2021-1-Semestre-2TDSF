@@ -10,16 +10,17 @@ import br.com.fiap.exception.SaldoInsuficienteException;
 
 public class Exercicio06 {
 
+	@SuppressWarnings("all")
 	public static void main(String[] args) {
 		//Instanciar uma conta corrente
 		ContaCorrente cc = new ContaCorrente(
 				1, 2, Calendar.getInstance(), 100, TipoConta.COMUM);
 		
-		//Instanciar uma conta poupança
+		//Instanciar uma conta poupanï¿½a
 		ContaPoupanca cp = new ContaPoupanca(
 				1, 23, new GregorianCalendar(2020, Calendar.JANUARY,1), 200, 1);
 		
-		//Chamar o método retirar
+		//Chamar o mï¿½todo retirar
 		try {
 			cc.retirar(50);
 			System.out.println("Saque efetuado!");

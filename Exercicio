@@ -1,0 +1,24 @@
+Banco Oracle:
+
+No mesmo projeto:
+
+SEQ_TAB_PRODUTO
+
+TAB_PRODUTO
+*cd_produto 	(PK) NUMBER
+*vl_produto 	NUMBER
+dt_cadastro 	DATE
+nr_itens 	NUMBER
+ds_categoria 	VARCHAR -> Enum no Java,
+fl_foto 	BLOB
+ds_produto 	VARCHAR(255)
+*nm_produto 	VARCHAR(50)
+ds_tamanho 	VARCHAR -> Enum no Java, PEQUENO, MEDIO, GRANDE
+
+
+
+
+
+
+
+
