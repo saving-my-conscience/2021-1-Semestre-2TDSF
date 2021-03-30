@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -73,6 +75,12 @@ public class Venda {
 	}
 
 	//CTRL + 3 -> gcuf
+	
+	//Método que é executado automáticamente antes de cadastrar
+	@PrePersist
+	public void executarAntesCadastro() {
+		System.out.println("Antes de cadastrar...");
+	}
 	
 	@Override
 	public String toString() {
