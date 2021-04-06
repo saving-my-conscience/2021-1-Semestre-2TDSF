@@ -4,4 +4,5 @@ import br.com.fiap.tds.entity.Usuario;
 
 public interface UsuarioDao extends GenericDao<Usuario, Integer> {
 
+	
 }

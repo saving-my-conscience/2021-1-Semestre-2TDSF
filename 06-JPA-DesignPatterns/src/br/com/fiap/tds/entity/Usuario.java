@@ -28,7 +28,7 @@ public class Usuario {
 	private String nome;
 	
 	@CreationTimestamp
-	@Column(name="dt_cadastro")
+	@Column(name="dt_cadastro", updatable = false)
 	private Calendar dataCadastro;
 	
 	@Enumerated(EnumType.STRING)
