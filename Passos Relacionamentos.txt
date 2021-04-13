@@ -1,0 +1,15 @@
+
+Um-para-um:
+
+Unidirecional
+	- Ir na classe que mapeia a FK no banco
+		Adicionar o atributo de referência e a anotação @OneToOne
+		(Opcional) @JoinColumn para configurar a coluna da FK
+		
+Bidirecional
+	- Ir na classe que não mapeia a FK no banco
+		Adicionar o atributo de referência e a anotação @OneToOne
+		Adicionar o mappedBy com o nome do atributo que mapeia a FK no banco
+		
+Um-para-muitos:
+	
