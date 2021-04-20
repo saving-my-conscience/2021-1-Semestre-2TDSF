@@ -37,7 +37,7 @@ public class ProjetoChallenge {
 	private Calendar dataEntrega;
 	
 	//Mapeamento do relacionamento um-para-um
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="cd_grupo", nullable = false)
 	private GrupoChallenge grupo;
 	
