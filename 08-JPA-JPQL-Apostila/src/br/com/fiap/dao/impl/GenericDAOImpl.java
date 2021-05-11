@@ -27,6 +27,8 @@ public abstract class GenericDAOImpl<T,K> implements GenericDAO<T, K> {
 	public List<T> listar(){
 		//Criar a query
 		TypedQuery<T> query = em.createQuery("from " + clazz.getName() , clazz);
+		//Configurar o máximo de resultados
+		query.setMaxResults(2);
 		//Executar a query
 		return query.getResultList();
 	}
@@ -66,4 +68,18 @@ public abstract class GenericDAOImpl<T,K> implements GenericDAO<T, K> {
 		}
 	}
 
+	@Override
+	public List<T> listar(int primeiraPosicao, int maximoResultados) {
+		return em.createQuery("from " + clazz.getName(), clazz)
+				.setMaxResults(maximoResultados)
+				.setFirstResult(primeiraPosicao) 
+				.getResultList();
+	}
+
 }
+
+
+
+
+
+

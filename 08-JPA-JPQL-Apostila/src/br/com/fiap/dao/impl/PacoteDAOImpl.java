@@ -1,5 +1,6 @@
 package br.com.fiap.dao.impl;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,4 +23,38 @@ public class PacoteDAOImpl extends GenericDAOImpl<Pacote,Integer> implements Pac
 		return query.getResultList();
 	}
 
+	//Retornar somente a descrição e a quantidade de dias em um vetor de objetos
+	@Override
+	public List<Object[]> buscarPorPrecoMenor(float preco) {
+		return em.createQuery("select p.descricao, p.qtdDias from Pacote p where p.preco < :valor", Object[].class)
+				.setParameter("valor", preco)
+				.getResultList();
+	}
+
+	//Retornnar somente a descrição e a quantidade de dias em um objeto Pacote
+	@Override
+	public List<Pacote> buscarPorPrecoMenor2(float preco) {
+		return em.createQuery("select new Pacote(p.descricao, p.qtdDias) from Pacote p where p.preco < :valor", Pacote.class)
+				.setParameter("valor", preco)
+				.getResultList();
+	}
+
+	@Override
+	public List<String> buscarPorPrecoMenor3(float preco) {
+		return em.createQuery("select p.descricao from Pacote p where p.preco < :valor", String.class)
+				.setParameter("valor", preco)
+				.getResultList();
+	}
+
+	@Override
+	public List<Pacote> buscarPorData(Calendar inicio, Calendar fim) {
+		return em.createQuery("from Pacote p where p.dataSaida between :i and :f", Pacote.class)
+				.setParameter("i", inicio)
+				.setParameter("f", fim)
+				.getResultList();
+	}
+	
 }
+
+
+
