@@ -6,6 +6,10 @@ import br.com.fiap.entity.Cliente;
 
 public interface ClienteDAO extends GenericDAO<Cliente,Integer> {
 	
+	//Pesquisar com query nativa
+	//Pesquisar por parte do nome ou cpf
+	List<Cliente> buscarPorNomeOuCpf(String nome, String cpf);
+	
 	//Pesquisar por parte do nome
 	List<Cliente> buscarPorNome(String nome);
 	

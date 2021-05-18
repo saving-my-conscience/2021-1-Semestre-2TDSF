@@ -8,8 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.NamedQuery;
+
+
+@NamedQueries({
+
+	//Pesquisar endereço por numero de habitantes da cidade
+	@NamedQuery(name="Endereco.PorQuantidadeHabitantes", 
+		query="select e from Endereco e where e.cidade.nrHabitantes > :numero"),
+
+	//Pesquisar endereço por cep
+	@NamedQuery(name="Endereco.PorCep",
+	 	query="select e from Endereco e where e.cep = :pCep")	
+	
+})
 
 @Entity
 @Table(name="TB_EAD_ENDERECO")

@@ -9,14 +9,17 @@ import javax.persistence.EntityManager;
 
 import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
+import br.com.fiap.dao.EnderecoDAO;
 import br.com.fiap.dao.PacoteDAO;
 import br.com.fiap.dao.TransporteDAO;
 import br.com.fiap.dao.impl.CidadeDAOImpl;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
+import br.com.fiap.dao.impl.EnderecoDAOImpl;
 import br.com.fiap.dao.impl.PacoteDAOImpl;
 import br.com.fiap.dao.impl.TransporteDAOImpl;
 import br.com.fiap.entity.Cidade;
 import br.com.fiap.entity.Cliente;
+import br.com.fiap.entity.Endereco;
 import br.com.fiap.entity.Pacote;
 import br.com.fiap.entity.Transporte;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
@@ -123,6 +126,33 @@ public class PesquisaTeste {
 		clientes = clienteDao.buscarPorNome2("a");
 		System.out.println("Buscar por parte do nome sem case sensitive");
 		clientes.forEach(c -> System.out.println(c.getNome()));
+		
+		//Contar a qtd de clientes por estado
+		long qtd = clienteDao.contarPorEstado("SP");
+		System.out.println("Quantidade de clientes por estado: " + qtd);
+		
+		//Somar os preços dos pacotes por transporte
+		transporte = transporteDao.pesquisar(2);
+		double soma = pacoteDao.somarPrecosPorTransporte(transporte);
+		System.out.println("Soma dos preços dos pacotes por transporte: " + soma);
+		
+		//Instanciar um endereço DAO
+		EnderecoDAO enderecoDao = new EnderecoDAOImpl(em);
+		//Pesquisar endereços por número de habitantes da cidade
+		List<Endereco> enderecos = enderecoDao.buscarPorQtdHabitantesMaior(2000);
+		//Exibir o logradouro e o nome da cidade e o número de habitantes
+		enderecos.forEach(e -> System.out.println(e.getLogradouro() + " " + 
+				e.getCidade().getNome() + " " + e.getCidade().getNrHabitantes()));
+		
+		//Pesquisar endereço por CEP
+		enderecos = enderecoDao.buscarPorCep(12898999);
+		System.out.println("Buscar endereços por CEP");
+		enderecos.forEach(e -> System.out.println(e.getLogradouro() + " " + e.getCep()));
+		
+		//Pesquisar cliente por parte do nome ou cpf
+		clientes = clienteDao.buscarPorNomeOuCpf("a", "90028383848");
+		System.out.println("Buscar clientes por nome ou cpf");
+		clientes.forEach(c -> System.out.println(c.getNome() + " " + c.getCpf()));
 		
 		//Fechar
 		em.close();

@@ -23,4 +23,7 @@ public interface PacoteDAO extends GenericDAO<Pacote,Integer> {
 	//Buscar pacotes por data de saída
 	List<Pacote> buscarPorData(Calendar inicio, Calendar fim);
 	
+	//Somar os preços dos pacotes por um transporte
+	double somarPrecosPorTransporte(Transporte transporte);
+	
 }

@@ -62,9 +62,18 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 
 	@Override
 	public long contarPorEstado(String estado) {
-		return em.createQuery("", Long.class)
-				.setParameter("", estado)
+		return em.createQuery("select count(c) from Cliente c where c.endereco.cidade.uf = :p", Long.class)
+				.setParameter("p", estado)
 				.getSingleResult();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Cliente> buscarPorNomeOuCpf(String nome, String cpf) {
+		return em.createNativeQuery("select * from TB_EAD_CLIENTE where nm_cliente like :pNome or nr_cpf = :pCpf", Cliente.class)
+				.setParameter("pNome", "%" + nome + "%")
+				.setParameter("pCpf", cpf)
+				.getResultList();
 	}
 
 }

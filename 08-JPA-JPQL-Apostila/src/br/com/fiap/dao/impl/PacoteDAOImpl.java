@@ -53,6 +53,13 @@ public class PacoteDAOImpl extends GenericDAOImpl<Pacote,Integer> implements Pac
 				.setParameter("f", fim)
 				.getResultList();
 	}
+
+	@Override
+	public double somarPrecosPorTransporte(Transporte transporte) {
+		return em.createQuery("select sum(p.preco) from Pacote p where p.transporte = :pTransporte", Double.class)
+				.setParameter("pTransporte", transporte)
+				.getSingleResult();
+	}
 	
 }
 
