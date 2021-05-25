@@ -62,7 +62,7 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 
 	@Override
 	public long contarPorEstado(String estado) {
-		return em.createQuery("select count(c) from Cliente c where c.endereco.cidade.uf = :p", Long.class)
+		return em.createQuery("select count(*) from Cliente c where c.endereco.cidade.uf = :p", Long.class)
 				.setParameter("p", estado)
 				.getSingleResult();
 	}
